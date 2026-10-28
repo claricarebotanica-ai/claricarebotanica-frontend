@@ -17,6 +17,40 @@ function parseEATDateTimeLocal(value) {
   return Number.isNaN(date.getTime()) ? '' : date.toISOString();
 }
 
+function setupHeroVideoPlayback() {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+
+  const startPlayback = () => {
+    if (document.visibilityState === 'hidden') return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    if (!video.paused) return;
+    const playback = video.play();
+    if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+  };
+
+  const removeGestureFallbacks = () => {
+    document.removeEventListener('pointerdown', startPlayback);
+    document.removeEventListener('keydown', startPlayback);
+  };
+
+  video.addEventListener('loadeddata', startPlayback);
+  video.addEventListener('playing', removeGestureFallbacks, { once: true });
+  document.addEventListener('pointerdown', startPlayback, { passive: true });
+  document.addEventListener('keydown', startPlayback);
+  document.addEventListener('visibilitychange', startPlayback);
+  window.addEventListener('pageshow', startPlayback);
+  startPlayback();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupHeroVideoPlayback, { once: true });
+} else {
+  setupHeroVideoPlayback();
+}
+
 const customerLoginButton = document.querySelector('#customer-login-button');
 const connectionStatus = document.querySelector('#connection-status');
 const productList = document.querySelector('#product-list');
