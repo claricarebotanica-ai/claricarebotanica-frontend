@@ -9,8 +9,7 @@ The public website has separate Home, About us, Our products, Contact us and Upd
 1. Install Node.js LTS from [nodejs.org](https://nodejs.org/) if `node` and `npm` are not recognized, then reopen PowerShell.
 2. Install frontend dependencies with `npm.cmd install`.
 3. Start the frontend with `npm.cmd run dev` and open the URL Vite prints (normally `http://localhost:5173`).
-4. To use API-backed features, start the backend from `C:\Users\PC\Desktop\Claricare Backend` with `npm.cmd install` and `npm.cmd start`.
-5. The frontend connects to the backend at `http://localhost:3000/api`.
+4. The frontend connects to the deployed ClariCare backend at `https://claricarebotanica-backend.onrender.com/api`.
 
 The frontend server does not start the backend. Features report API errors when the backend is unreachable.
 

@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://claricarebotanica-backend.onrender.com/api';
 const USER_STORAGE_KEY = 'claricare-user';
 const TOKEN_STORAGE_KEY = 'claricare-token';
 const EAST_AFRICA_TIME_ZONE = 'Africa/Nairobi';
