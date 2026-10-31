@@ -740,7 +740,7 @@ body { background: #fbfaf6; }
 .button-light { background: #fff; color: var(--green-dark); }
 .button-light:hover { background: #f5f8f2; }
 .site-footer { padding: 0 clamp(25px, 8vw, 115px); background: #203b30; color: #f6f4eb; }
-.footer-main { display: grid; grid-template-columns: 1.35fr .8fr 1fr .95fr; gap: clamp(24px, 4vw, 60px); padding: 48px 0 42px; border-bottom: 1px solid rgba(236, 241, 230, .18); }
+.footer-main { display: grid; grid-template-columns: 1.25fr .85fr 1fr .9fr 1.1fr; gap: clamp(18px, 2.6vw, 36px); padding: 48px 0 42px; border-bottom: 1px solid rgba(236, 241, 230, .18); }
 .footer-brand { gap: 8px; font-size: 14px; }
 .footer-brand .brand-logo { width: 78px; height: 78px; }
 .footer-brand small { color: #c5d2c6; }
