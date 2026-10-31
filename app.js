@@ -52,6 +52,8 @@ if (document.readyState === 'loading') {
 }
 
 const customerLoginButton = document.querySelector('#customer-login-button');
+const siteMenuToggle = document.querySelector('#site-menu-toggle');
+const siteHeader = document.querySelector('#site-header');
 const connectionStatus = document.querySelector('#connection-status');
 const productList = document.querySelector('#product-list');
 const publicProductList = document.querySelector('#public-products');
@@ -250,11 +252,32 @@ document.querySelector('#show-forgot-password').addEventListener('click', () => 
 document.querySelector('#show-login-from-register').addEventListener('click', () => setCustomerAuthMode('login'));
 document.querySelector('#show-login-from-forgot').addEventListener('click', () => setCustomerAuthMode('login'));
 customerLoginButton.addEventListener('click', () => {
+  setSiteMenuOpen(false);
   if (String(currentUser?.role || '').toLowerCase() === 'customer') {
     openWorkspace('dashboard');
     return;
   }
   showCustomerAuthPage('login');
+});
+function setSiteMenuOpen(open) {
+  siteHeader.classList.toggle('menu-open', open);
+  siteMenuToggle.setAttribute('aria-expanded', String(open));
+  siteMenuToggle.setAttribute('aria-label', open ? 'Close website menu' : 'Open website menu');
+}
+siteMenuToggle.addEventListener('click', () => {
+  setSiteMenuOpen(siteMenuToggle.getAttribute('aria-expanded') !== 'true');
+});
+document.querySelectorAll('.site-nav [data-public-page-link]').forEach((link) => {
+  link.addEventListener('click', () => setSiteMenuOpen(false));
+});
+document.addEventListener('click', (event) => {
+  if (!siteHeader.contains(event.target)) setSiteMenuOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && siteMenuToggle.getAttribute('aria-expanded') === 'true') {
+    setSiteMenuOpen(false);
+    siteMenuToggle.focus();
+  }
 });
 ['#admin-home-link', '#admin-back-link'].forEach((selector) => {
   document.querySelector(selector).addEventListener('click', (event) => {
@@ -569,7 +592,8 @@ function updateProfile() {
   document.querySelector('#workspace').classList.toggle('customer-workspace', role === 'customer');
   document.querySelector('#customer-dashboard-logout').hidden = role !== 'customer';
   customerLoginButton.hidden = false;
-  customerLoginButton.textContent = role === 'customer' ? 'My account' : 'Customer login';
+  customerLoginButton.querySelector('.login-label-full').textContent = role === 'customer' ? 'My account' : 'Customer login';
+  customerLoginButton.querySelector('.login-label-short').textContent = role === 'customer' ? 'Account' : 'Login';
   customerLoginButton.setAttribute('aria-label', role === 'customer' ? 'Open your customer dashboard' : 'Customer sign in or create an account');
   document.querySelector('#agreement-employee-id').value = signedIn ? currentUser.id : '';
   document.querySelector('#logout-button').hidden = !signedIn;

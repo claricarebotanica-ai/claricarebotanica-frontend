@@ -92,6 +92,7 @@ button { color: inherit; }
   .department-discussion-form { padding: 12px; }
   .department-discussion-compose-footer { align-items: flex-start; flex-direction: column; }
 }
+
 @keyframes rise { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 .welcome-row { position: relative; display: flex; min-height: 208px; align-items: center; justify-content: space-between; overflow: hidden; padding: 30px 44px; border-radius: 15px; background: #eaf1e9; }
 .welcome-row .eyebrow { color: #69856f; }
@@ -2073,4 +2074,24 @@ form label { color: #405448; font-size: 12px; line-height: 1.45; }
   .page-heading h1 { font-size: clamp(27px, 8vw, 34px); }
   .button { min-height: 42px; }
   .page-footer { font-size: 10px; }
+}
+
+.site-menu-toggle { display: none; }
+.login-label-short { display: none; }
+.site-menu-toggle:focus-visible, .customer-login-button:focus-visible { outline: 3px solid #dfd09c; outline-offset: 3px; }
+@media (max-width: 680px) {
+  .site-header { position: sticky; height: 72px; min-height: 72px; flex-wrap: nowrap; gap: 10px; padding: 6px 15px; }
+  .site-header .site-brand { min-width: 0; flex: 1 1 auto; gap: 8px; }
+  .site-header .site-brand .brand-logo { width: 54px; height: 54px; }
+  .site-header .site-brand .brand-legal-name { font-size: 11px; letter-spacing: .35px; }
+  .site-menu-toggle { display: grid; width: 42px; height: 42px; flex: 0 0 auto; order: 2; place-items: center; border: 1px solid rgba(255,255,255,.38); border-radius: 12px; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+  .site-menu-toggle span { margin-top: -8px; font-size: 20px; font-weight: 800; letter-spacing: 2px; }
+  .site-menu-toggle:hover, .site-menu-toggle[aria-expanded="true"] { background: rgba(255,255,255,.17); }
+  .site-header .customer-login-button { order: 3; min-height: 40px; margin-left: 0; padding: 0 13px; border-radius: 10px; font-size: 12px; }
+  .login-label-full { display: none; }
+  .login-label-short { display: inline; }
+  .site-header .site-nav { position: absolute; z-index: 10; top: calc(100% + 8px); right: 12px; left: 12px; display: none; width: auto; flex-direction: column; gap: 3px; padding: 9px; border: 1px solid #e1e8df; border-radius: 15px; background: #fffefa; box-shadow: 0 16px 38px rgba(24,43,31,.22); }
+  .site-header.menu-open .site-nav { display: flex; }
+  .site-header .site-nav a { display: flex; min-height: 46px; align-items: center; padding: 0 14px; border-radius: 9px; color: #435b49; font-size: 13px; }
+  .site-header .site-nav a:hover, .site-header .site-nav a.active { background: #eef4eb; color: #315e3c; }
 }
