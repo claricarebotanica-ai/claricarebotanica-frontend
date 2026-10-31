@@ -20,6 +20,7 @@ function parseEATDateTimeLocal(value) {
 function setupHeroVideoPlayback() {
   const video = document.querySelector('.hero-video');
   if (!video) return;
+  const playButton = document.querySelector('#hero-video-play');
 
   const startPlayback = () => {
     if (document.visibilityState === 'hidden') return;
@@ -28,8 +29,17 @@ function setupHeroVideoPlayback() {
     video.playsInline = true;
     if (!video.paused) return;
     const playback = video.play();
-    if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+    if (playback && typeof playback.catch === 'function') {
+      playback.catch(() => {
+        if (playButton) playButton.hidden = false;
+      });
+    }
   };
+
+  playButton?.addEventListener('click', startPlayback);
+  video.addEventListener('playing', () => {
+    if (playButton) playButton.hidden = true;
+  });
 
   const removeGestureFallbacks = () => {
     document.removeEventListener('pointerdown', startPlayback);
@@ -37,6 +47,7 @@ function setupHeroVideoPlayback() {
   };
 
   video.addEventListener('loadeddata', startPlayback);
+  video.addEventListener('canplay', startPlayback);
   video.addEventListener('playing', removeGestureFallbacks, { once: true });
   document.addEventListener('pointerdown', startPlayback, { passive: true });
   document.addEventListener('keydown', startPlayback);
