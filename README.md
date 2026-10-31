@@ -13,7 +13,7 @@ The public website has separate Home, About us, Our products, Contact us and Upd
 
 The frontend server does not start the backend. Features report API errors when the backend is unreachable.
 
-Open `http://localhost:5173/employee` for employee sign-in or `http://localhost:5173/referrer` for referrer sign-in. Employee and referrer portal links are available on the sign-in screens. The longer `/employee-login` and `/referrer-login` routes remain available too.
+Open `http://localhost:5173/admin`, `/employee`, `/referrer`, or `/applicant-login` for the corresponding sign-in page. Public portal links are available in the website footer; each sign-in page is dedicated to its own account type. The longer `/employee-login` and `/referrer-login` routes remain available too.
 
 ## Features supported by the current backend
 

@@ -446,9 +446,6 @@ body { background: #fbfaf6; }
 .admin-login-card form .button { margin-top: 5px; }
 .admin-login-card .feedback { margin-top: 12px; }
 .admin-back-link { display: inline-block; margin-top: 18px; color: var(--green-dark); font-size: 10px; font-weight: 600; text-decoration: none; }
-.portal-access-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
-.portal-access-links a { display: inline-flex; min-height: 34px; align-items: center; justify-content: center; padding: 0 11px; border: 1px solid #dce5d9; border-radius: 6px; color: var(--green-dark); background: #f7f9f5; font-size: 9px; font-weight: 700; letter-spacing: .45px; text-decoration: none; }
-.portal-access-links a:hover, .portal-access-links a:focus-visible, .portal-access-links a[aria-current="page"] { border-color: #809b7e; background: #eaf1e8; }
 .admin-login-footnote { margin: 17px 0 0; color: #89958b; font-size: 9px; }
 .public-hero { position: relative; display: grid; min-height: min(720px, calc(100vh - 70px)); grid-template-columns: 1fr; align-items: center; gap: 30px; overflow: hidden; padding: 90px clamp(28px, 10vw, 145px) 100px; background: #334c39; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }

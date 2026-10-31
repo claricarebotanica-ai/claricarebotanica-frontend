@@ -150,21 +150,12 @@ function showStaffLogin(role, updateAddress = true) {
     : staffLoginRole === 'referrer'
     ? 'Sign in to view your referrals and commissions.'
     : 'Sign in with your employee account to access the staff workspace.';
-  document.querySelectorAll('[data-staff-portal]').forEach((link) => {
-    if (link.dataset.staffPortal === staffLoginRole) link.setAttribute('aria-current', 'page');
-    else link.removeAttribute('aria-current');
-  });
   document.querySelector('#staff-login-submit').innerHTML = `Sign in as ${staffLoginRole} <span aria-hidden="true">→</span>`;
   document.querySelector('#show-applicant-register').hidden = staffLoginRole !== 'applicant';
   document.querySelector('#staff-back-link').hidden = staffLoginRole === 'applicant';
-  document.querySelector('#staff-portal-links').hidden = staffLoginRole === 'applicant';
   document.querySelector('#applicant-register-form').hidden = true;
   document.querySelector('#staff-login-form').hidden = false;
   document.querySelector('#show-applicant-register').textContent = 'Create an applicant account';
-  document.querySelectorAll('#staff-portal-links [data-staff-portal]').forEach((link) => {
-    link.hidden = staffLoginRole === 'applicant';
-  });
-  document.querySelector('[data-staff-portal="applicant"]').hidden = staffLoginRole === 'applicant';
   document.querySelector('#staff-login-feedback').textContent = '';
   if (updateAddress) {
     const query = staffLoginRole === 'applicant' && pendingApplicantPositionId
